@@ -20,7 +20,7 @@ const viewRouter = require('./routes/viewRoutes');
 const bookingRouter = require('./routes/bookingRoutes');
 const Tour = require('./models/tourModel');
 
-console.log(process.env.NODE_ENV);
+// console.log(process.env.NODE_ENV);
 
 app.set('view engine', 'pug')
 app.set('views', path.join(__dirname, 'views'))
@@ -83,7 +83,7 @@ app.use(hpp({
     ]
 }))
 
-
+app.use(compression())
 
 //test middlewares
 app.use((req, res, next) => {

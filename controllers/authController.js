@@ -47,7 +47,7 @@ exports.signup = catchAsync(async (req, res, next) => {
   })
 
   const url = `${req.protocol}://${req.get('host')}/me`
-  console.log(url)
+  // console.log(url)
   await new Email(newUser, url).sendWelcome()
   createSendToken(newUser, 201, res)
 
@@ -135,7 +135,7 @@ exports.isLoggedin = catchAsync(async (req, res, next) => {
 exports.restrictTo = (...roles) => {
   return (req, res, next) => {
     //roles [admin, lead-guide]
-    console.log(roles, req.user.role)
+    // console.log(roles, req.user.role)
     if (!roles.includes(req.user.role)) {
       return next(new AppError('You do not have permission to perform this action', 403))
     }
@@ -195,7 +195,7 @@ exports.resetPassword = catchAsync(async (req, res, next) => {
 
 exports.updatePassword = catchAsync(async (req, res, next) => {
   //1. get user from collection
-  console.log(req.user)
+  // console.log(req.user)
   const user = await User.findById(req.user.id).select('+password')
 
   //2. check if posted current pass is correct

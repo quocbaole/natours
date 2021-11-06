@@ -13,7 +13,7 @@ const handleDublicateFieldDB = err => {
 }
 const handleValidationDB = err => {
   const errors = Object.values(err.errors).map(el => el.message)
-  console.log(5)
+  // console.log(5)
   const message = `Invalid input data. ${errors.join('. ')}`
   return new AppError(message, 400)
 }
@@ -30,7 +30,7 @@ const sendErrorDev = (err, req, res) => {
       stack: err.stack
     })
   }
-  console.log(err)
+  // console.log(err)
   return res.status(err.statusCode).render('error', {
     title: 'Something went wrong!',
     msg: err.message
@@ -49,7 +49,7 @@ const sendErrorProd = (err, req, res) => {
         message: err.message
       })
     }
-    console.log(err)
+    // console.log(err)
     return res.status(500).json({
       status: 'error',
       // message: 'Something went wrong! ',
